@@ -22,6 +22,8 @@ export const submitPurchaseForm = async (purchaseFormData) => {
 	} catch (e) {
 		alert(e);
 	}
+
+
 };
 
 export const authForm = async (authFormData) => {
