@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    text-align: left;
+    margin-top: 40px;
+    table-layout: fixed;
+}
+
+
+
+
+td {
+    letter-spacing: 1px;
+    line-height: 3;
+    width: 50px;
+}
+
+
+tr td:nth-child(9),
+tr td:nth-child(10) {
+    text-align: center;
+}
+
+tr th:nth-child(10),
+tr th:nth-child(9) {
+    text-align: center;
+}
+
+@media only screen and (max-width: 390px) {
+    table {
+        width: 200%;
+
+    }
+
+
+}
