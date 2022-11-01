@@ -175,6 +175,7 @@ const Reports = () => {
 										setSendDate((prev) => !prev);
 									}}
 									className={style.dateSearchBtn}
+									sx={{ width: "400px" }}
 								>
 									Search Date
 								</Button>
@@ -251,9 +252,7 @@ const Reports = () => {
 										</tr>
 									))
 								) : (
-									<tr>
-										<td>No</td>
-									</tr>
+									<tr></tr>
 								)}
 							</tbody>
 						</table>

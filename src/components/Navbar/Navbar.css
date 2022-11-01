@@ -24,12 +24,12 @@
     font-size: 10px;
     display: flex;
     align-items: center;
-    flex: 1
+
 }
 
 .NavBar-SecondItem {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex: 1
 }
 
@@ -39,7 +39,7 @@
 }
 
 .NavBar-ThirdItem {
-    flex: 1;
+
     display: flex;
     justify-content: flex-end;
     flex-direction: row;

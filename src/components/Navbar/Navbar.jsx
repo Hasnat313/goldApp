@@ -54,7 +54,7 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<div>
+			{/* <div>
 				<Drawer anchor={"left"} open={state["left"]} onClose={toggleDrawer("left", false)} elevation sx={{ "& .MuiDrawer-paperAnchorLeft": { backgroundColor: "black", color: "white" } }}>
 					<Box sx={{ width: 240 }}>
 						<Typography>Hasnat</Typography>
@@ -62,10 +62,10 @@ const Navbar = () => {
 						<Typography>Hasnat</Typography>
 					</Box>
 				</Drawer>
-			</div>
+			</div> */}
 			{/* <div className="container"></div> */}
 			<div className="Navbar">
-				<FormatListBulletedIcon onClick={toggleDrawer("left", true)} sx={{ cursor: "pointer" }} />
+				{/* <FormatListBulletedIcon onClick={toggleDrawer("left", true)} sx={{ cursor: "pointer" }} /> */}
 				<div className="NavBar-FirstItem">{user ? <h1>{userData}</h1> : null}</div>
 
 				<div className="NavBar-SecondItem">

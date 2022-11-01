@@ -6,7 +6,7 @@ const Clock = (props) => {
 	const [date, setDate] = useState(format(new Date(), "dd/MM/yyyy hh:mm:ss"));
 
 	setInterval(() => {
-		setDate(format(new Date(), "dd/MM/yyyy hh:mm:ss"));
+		setDate(format(new Date(), "dd/MM/yyyy hh:mm:ss a"));
 	}, 1000);
 
 	return (

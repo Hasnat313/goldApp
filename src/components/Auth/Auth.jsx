@@ -24,8 +24,8 @@ const Auth = () => {
 	var err = "";
 
 	const dispatch = useDispatch();
-	const [type, setType] = useState("");
-	const [type1, setType1] = useState("");
+	const [type, setType] = useState("password");
+	const [type1, setType1] = useState("password");
 	const [authFormData, setAuthFormData] = useState(initialData);
 	const [isSignup, switchmode] = useState(false);
 	const [err1, setError] = useState("");
@@ -113,7 +113,7 @@ const Auth = () => {
 			password: "",
 			confirmPassword: "",
 		});
-		handleShowPassword(false);
+		// handleShowPassword(false);
 	};
 
 	const pageStatus = "false";
