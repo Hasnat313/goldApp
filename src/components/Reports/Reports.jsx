@@ -4,7 +4,7 @@ import style from "./Reports.module.css";
 import { Button, TextField, InputAdornment } from "@mui/material";
 import { Link } from "react-router-dom";
 import View from "../View/View";
-import { getPurchaseFormData } from "../../api";
+import { getPurchaseFormData, getTradeFormData } from "../../api";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ const mo = date.getMonth();
 const y = date.getFullYear();
 const h = date.getHours();
 const m = date.getMinutes();
-const string = `${d}/${mo}/${y}   ${h}:${m}`;
+const string = `${d}/${mo}/${y}`;
 
 const initialData = {
 	reportID: "",
@@ -35,7 +35,7 @@ const Reports = () => {
 	const [formdataArray, setFormDataArray] = useState([]);
 	const [totalPages, setTotalPages] = useState(0);
 	const [pageNumber, setPageNumber] = useState(0);
-	const [isPurchaseReport, setPurchaseStatus] = useState("");
+	const [isPurchaseReport, setPurchaseStatus] = useState(true);
 	const [reportID, hanldeReportID] = useState();
 	const [data, setData] = useState(initialData);
 	const [startDate, setStartDate] = useState(null);
@@ -48,7 +48,7 @@ const Reports = () => {
 	const { bool } = useParams();
 
 	useEffect(() => {
-		isPurchaseReport && call();
+		isPurchaseReport ? call() : call2();
 	}, [pageNumber, isPurchaseReport, reportID, date]);
 
 	useEffect(() => {
@@ -58,6 +58,21 @@ const Reports = () => {
 	async function call() {
 		try {
 			const resp = await getPurchaseFormData(pageNumber, reportID, startDate, endDate);
+			setLoading(false);
+
+			const { data, total } = resp.data;
+
+			setFormDataArray([...data]);
+
+			setTotalPages(total);
+		} catch (e) {}
+	}
+	async function call2() {
+		try {
+			const resp = await getTradeFormData(pageNumber, reportID, startDate, endDate);
+
+			console.log(resp);
+
 			setLoading(false);
 
 			const { data, total } = resp.data;
@@ -205,12 +220,19 @@ const Reports = () => {
 								<tr>
 									<th>Report ID</th>
 									<th>Name</th>
-									{isPurchaseReport && (
+									{isPurchaseReport ? (
 										<>
 											<th>Orignal Pond</th>
 											<th>Mail</th>
 											<th>Pond</th>
 											<th>Pure</th>
+										</>
+									) : (
+										<>
+											<th>Weight</th>
+											<th>Rate</th>
+											<th>Type</th>
+											<th>Cash</th>
 										</>
 									)}
 									<th>Date/Time</th>
@@ -220,40 +242,69 @@ const Reports = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{isPurchaseReport ? (
-									formdataArray.map((item) => (
-										<tr key={item._id}>
-											<td>{item.reportID}</td>
-											<td>{item.customer}</td>
-											<td>{item.pondWeight}</td>
-											<td>{item.finalWeight}</td>
-											<td>{item.gramRate}</td>
-											<td>{item.pureWeight}</td>
-											<td>{string}</td>
-											<td>{item.customer}</td>
-											<td>
-												<Button
-													variant="contained"
-													size="small"
-													onClick={() => {
-														navigate("/Invoice");
-														// handlePrint();
-													}}
-												>
-													Print
-													<Print fontSize="small" />
-												</Button>
-											</td>
-											{/* <td>
+								{isPurchaseReport
+									? formdataArray.map((item) => (
+											<tr key={item._id}>
+												<td>{item.reportID}</td>
+												<td>{item.customer}</td>
+												<td>{item.pondWeight}</td>
+												<td>{item.finalWeight}</td>
+												<td>{item.gramRate}</td>
+												<td>{item.pureWeight}</td>
+												<td>{string}</td>
+												<td>{item.customer}</td>
+												<td>
+													<Button
+														variant="contained"
+														size="small"
+														onClick={() => {
+															navigate("/Invoice");
+															// handlePrint();
+														}}
+													>
+														Print
+														<Print fontSize="small" />
+													</Button>
+												</td>
+												{/* <td>
 												<Button variant="contained" size="small" sx={{ width: "1px" }}>
 													View
 												</Button>
 											</td> */}
-										</tr>
-									))
-								) : (
-									<tr></tr>
-								)}
+											</tr>
+									  ))
+									: formdataArray.map((item) => (
+											<tr key={item._id}>
+												<td>{item.reportID}</td>
+												<td>{item.name}</td>
+												<td>{item.weight}</td>
+												<td>{item.rate}</td>
+												<td>{item.type}</td>
+												<td>{item.cash}</td>
+												<td>{string}</td>
+
+												<td>{"Hasnat"}</td>
+
+												<td>
+													<Button
+														variant="contained"
+														size="small"
+														onClick={() => {
+															navigate("/Invoice");
+															// handlePrint();
+														}}
+													>
+														Print
+														<Print fontSize="small" />
+													</Button>
+												</td>
+												{/* <td>
+												<Button variant="contained" size="small" sx={{ width: "1px" }}>
+													View
+												</Button>
+											</td> */}
+											</tr>
+									  ))}
 							</tbody>
 						</table>
 

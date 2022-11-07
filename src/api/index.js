@@ -3,28 +3,19 @@ import { useState } from "react";
 
 // const url = "http://localhost:5000/purchaseForm/post";
 const API = axios.create({
-	// baseURL: "http://localhost:5000",
-	baseURL: "https://goldappreal.herokuapp.com",
+	baseURL: "http://localhost:5000",
+	// baseURL: "https://goldappreal.herokuapp.com",
 });
 
 const token = JSON.parse(localStorage.getItem("userToken"));
 
-export const submitPurchaseForm = async (purchaseFormData) => {
-	try {
-		const resp = await API.post(
-			"/api/purchaseForm/post",
-			{
-				headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}` },
-			},
-			purchaseFormData
-		);
-		alert(resp.data.name);
-	} catch (e) {
-		alert(e);
-	}
+export const submitPurchaseForm = (purchaseFormData) => API.post("/api/purchaseForm/post", purchaseFormData);
+export const submitTradeForm = (tradeFormData) => API.post("/api/tradeForm/post", tradeFormData);
 
 
-};
+
+
+
 
 export const authForm = async (authFormData) => {
 	try {
@@ -54,6 +45,10 @@ export const authFormLogin = async (authFormData) => {
 
 export const getPurchaseFormData = (pageSize, reportID, startDate, endDate) =>
 	API.get(`/api/purchaseForm/get?pageSize=${pageSize}&&reportID=${reportID}&&startDate=${startDate}&&endDate=${endDate}`, {
+		headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}` },
+	});
+export const getTradeFormData = (pageSize, reportID, startDate, endDate) =>
+	API.get(`/api/tradeForm/get?pageSize=${pageSize}&&reportID=${reportID}&&startDate=${startDate}&&endDate=${endDate}`, {
 		headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}` },
 	});
 
