@@ -41,6 +41,10 @@ const PurchaseForm = () => {
 			try {
 				const data = await submitPurchaseForm(values);
 				console.log(data);
+				if (data.status === 201) {
+					alert("Added Successfully");
+					handleReset();
+				}
 			} catch (e) {
 				console.log(e);
 			}

@@ -24,10 +24,14 @@ const TradeForm = () => {
 			try {
 				const data = await submitTradeForm(values);
 				console.log(data);
+				if (data.status === 201) {
+					alert("Added Successfully");
+					handleReset();
+				}
 			} catch (e) {
 				console.log(e);
 			}
-			alert(JSON.stringify(values, null, 2));
+			// alert(JSON.stringify(values, null, 2));
 		},
 	});
 	values.cash = disabled1 === "option1" ? (values.weight * values.rate) / 11.664 : values.cash;
