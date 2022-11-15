@@ -35,6 +35,7 @@ const PurchaseForm = () => {
 			desc: "",
 			ratti: 0,
 			milli: 0,
+			paymentMethod: "Cash",
 		},
 		validationSchema: disabled1 === "option1" ? purchaseFormNonRattiMilli : purchaseFormRattiMilli,
 		onSubmit: async (values) => {
@@ -62,8 +63,9 @@ const PurchaseForm = () => {
 
 	values.finalWeight = values.pondWeight - values.mail;
 
-	values.pureWeight = disabled1 === "option2" && (rattiMilli === "Ratti" ? ((values.ratti - 96) / 96) * (values.pondWeight - values.mail) : (values.milli / 96) * (values.pondWeight - values.mail));
-	values.cash = disabled1 === "option1" ? (values.pondWeight - values.mail) * values.gramRate : (values.rate * values.pureWeight) / 11.664;
+	values.pureWeight = disabled1 === "option2" && (rattiMilli === "Ratti" ? (((values.ratti - 96) / 96) * (values.pondWeight - values.mail)).toFixed(3) : ((values.milli * 96 - 96) / 96) * (values.pondWeight - values.mail).toFixed(3));
+
+	values.cash = disabled1 === "option1" ? ((values.pondWeight - values.mail) * values.gramRate).toFixed(3) : ((values.rate * values.pureWeight) / 11.664).toFixed(3);
 	const loginUserName = useSelector((state) => {
 		return state.authFormData.authFormData.name;
 	});
@@ -130,15 +132,6 @@ const PurchaseForm = () => {
 							</Typography>
 						</Box>
 					</div>
-					{/* <div className={style.paymentMethod}>
-						<Typography variant="h6" id={style.paymentLabel}>
-							Payment Method
-						</Typography>
-						<RadioGroup sx={{ flexDirection: "row" }} className={style.paymentLabelChoice}>
-							<FormControlLabel value="Pure" disabled={disabled1 === "option1" && true} control={<Radio />} label="Pure" sx={{ width: "25%" }} />
-							<FormControlLabel value="Cash" disabled={disabled1 === "option1" && true} control={<Radio />} label="Cash" sx={{ width: "25%" }} />
-						</RadioGroup>
-					</div> */}
 
 					<div className={style.rmpureweight}>
 						<TextField sx={{}} label="Pure Weight" type="number" variant="outlined" value={values.pureWeight} onChange={handleChange} name="pureWeight" size="small" className={style.pureWeight} disabled={disabled1 === "option1" && true} />
@@ -176,6 +169,15 @@ const PurchaseForm = () => {
 					<Typography variant="body" sx={{ color: "red", alignSelf: "flex-start", fontSize: "15px" }}>
 						{errors.rate}
 					</Typography>
+					<div className={style.paymentMethod}>
+						<Typography variant="h6" id={style.paymentLabel}>
+							Payment Method
+						</Typography>
+						<RadioGroup sx={{ flexDirection: "row" }} className={style.paymentLabelChoice} defaultValue="Cash" value={values.paymentMethod} onChange={handleChange} name="paymentMethod">
+							<FormControlLabel value="Pure" disabled={disabled1 === "option1" && true} control={<Radio />} label="Pure" sx={{ width: "25%" }} />
+							<FormControlLabel value="Cash" control={<Radio />} label="Cash" sx={{ width: "25%" }} />
+						</RadioGroup>
+					</div>
 					<TextField label="Cash" type="number" variant="outlined" value={values.cash} name="cash" size="small" fullWidth />
 					<TextField label="Description" variant="outlined" value={values.desc} onChange={handleChange} name="desc" multiline rows={4} size="small" fullWidth />
 					<div style={{ display: "flex", justifyContent: "flex-end", width: "100%", gap: "20px", alignItems: "center" }}>
