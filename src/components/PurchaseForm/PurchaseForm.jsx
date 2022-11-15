@@ -63,7 +63,7 @@ const PurchaseForm = () => {
 
 	values.finalWeight = values.pondWeight - values.mail;
 
-	values.pureWeight = disabled1 === "option2" && (rattiMilli === "Ratti" ? (((values.ratti - 96) / 96) * (values.pondWeight - values.mail)).toFixed(3) : ((values.milli * 96 - 96) / 96) * (values.pondWeight - values.mail).toFixed(3));
+	values.pureWeight = disabled1 === "option2" && (rattiMilli === "Ratti" ? (((values.ratti - 96) / 96) * (values.pondWeight - values.mail)).toFixed(3) : (((values.milli * 96 - 96) / 96) * (values.pondWeight - values.mail)).toFixed(3));
 
 	values.cash = disabled1 === "option1" ? ((values.pondWeight - values.mail) * values.gramRate).toFixed(3) : ((values.rate * values.pureWeight) / 11.664).toFixed(3);
 	const loginUserName = useSelector((state) => {
