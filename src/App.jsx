@@ -7,6 +7,7 @@ import PurchaseForm from "./components/PurchaseForm/PurchaseForm";
 import UserList from "./components/AdminComponents/UserList/UserList";
 import TradeForm from "./components/TradeForm/TradeForm";
 import Reports from "./components/Reports/Reports";
+import Calculations from "./components/Calculations/Calculations";
 import View from "./components/View/View";
 import RedirectPage from "./RedirectPage";
 import ForgotPassword from "./components/Forgot Password/ForgotPassword";
@@ -45,7 +46,7 @@ const App = () => {
 					<Route path="/purchase" element={<PurchaseForm />} />
 					<Route path="/trade" element={<TradeForm />} />
 					<Route path="/view" element={<View />} />
-					<Route path="/report/:bool" element={<Reports />} />
+					<Route path="/report/:bool" element={<Calculations />} />
 					<Route path="/Invoice" element={<Invoice />} />
 					<Route path="/admin" element={<FrontEndAdminAuth />}>
 						<Route path="unverifiedUserList" element={<UserList />} />

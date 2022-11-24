@@ -11,6 +11,8 @@ const token = JSON.parse(localStorage.getItem("userToken"));
 
 export const submitPurchaseForm = (purchaseFormData) => API.post("/api/purchaseForm/post", purchaseFormData);
 export const submitTradeForm = (tradeFormData) => API.post("/api/tradeForm/post", tradeFormData);
+export const getPurchaseFromCal = () => API.get("/api/purchaseForm/getCashSum");
+export const getTradeFromCal = () => API.get("/api/tradeForm/get/cashAndWeight");
 
 
 
