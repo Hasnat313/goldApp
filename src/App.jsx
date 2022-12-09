@@ -20,6 +20,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import DrawerM from "./DrawerM";
+import Insta from "./components/Insta";
 const App = () => {
 	// const [darakMode, setDarkMode] = useState(false);
 	// const darkTheme = createTheme({
@@ -34,6 +35,7 @@ const App = () => {
 	return (
 		<>
 			<Routes>
+				<Route path="/noInternet" element={<>Server Down</>} />
 				<Route element={<AutoLogin />}>
 					<Route path="/" element={<Auth />} />
 				</Route>
@@ -41,6 +43,7 @@ const App = () => {
 				<Route path="/redirectPage" element={<RedirectPage />} />
 				<Route path="/forgotPassword/:id/:pageStatus" element={<ForgotPassword />} />
 				<Route path="/drawer" element={<DrawerM />} />
+				<Route path="/insta/" element={<Insta />} />
 
 				<Route element={<FrontEndUserAndAdminAuth />}>
 					<Route path="/purchase" element={<PurchaseForm />} />
