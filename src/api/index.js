@@ -3,9 +3,9 @@ import { useState } from "react";
 
 // const url = "http://localhost:5000/purchaseForm/post";
 const API = axios.create({
-	baseURL: "http://localhost:5000",
+	// baseURL: "http://localhost:5000",
 	// baseURL: "https://goldappreal.herokuapp.com",
-	// baseURL: "https://gold-app-backend-production-5eca.up.railway.app",
+	baseURL: "https://gold-app-backend-production-5eca.up.railway.app",
 });
 
 const token = JSON.parse(localStorage.getItem("userToken"));
