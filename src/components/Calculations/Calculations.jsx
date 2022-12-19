@@ -56,7 +56,7 @@ const Reports = () => {
 			setLoading(true);
 			console.log("hasnat");
 			const resp = await getTradeFromCal();
-			// console.log(resp);
+			console.log(resp);
 			setLoading(false);
 			const { data } = resp;
 			setTradeFormData(data);
@@ -74,10 +74,10 @@ const Reports = () => {
 						<RotatingLines strokeColor="grey" strokeWidth="3" animationDuration="0.75" width="40" visible={true} />
 					</Box>
 				) : isPurchaseReport ? (
-					<Stack direction={"row"} spacing={2} mt={15} alignItems="center" justifyContent={"center"} sx={{ width: "100%" }}>
-						<Card sx={{ minWidth: 275, height: 200, textAlign: "center" }}>
-							<CardContent sx={{ mt: "60px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+					<Stack direction={"row"} spacing={2} mt={3} alignItems="center" justifyContent={"center"} sx={{ width: "100%" }}>
+						<Card sx={{ minWidth: 275, height: 80, textAlign: "center", border: "2px solid black" }}>
+							<CardContent>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Cash
 								</Typography>
 
@@ -87,9 +87,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 275, height: 200, textAlign: "center" }}>
-							<CardContent sx={{ mt: "60px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 275, height: 80, textAlign: "center", border: "2px solid black" }}>
+							<CardContent>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Pure Weight
 								</Typography>
 
@@ -101,10 +101,10 @@ const Reports = () => {
 						</Card>
 					</Stack>
 				) : (
-					<Stack direction={"row"} spacing={2} mt={15} alignItems="center" justifyContent={"center"} sx={{ width: "100%" }}>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+					<Stack direction={"row"} spacing={2} mt={3} alignItems="center" justifyContent={"center"} sx={{ width: "100%" }}>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell PCS Gold
 								</Typography>
 
@@ -114,9 +114,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell PCS Cash
 								</Typography>
 
@@ -126,9 +126,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell Grami Gold
 								</Typography>
 
@@ -138,9 +138,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell Grami Cash
 								</Typography>
 
@@ -150,9 +150,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell Rawa Gold
 								</Typography>
 
@@ -162,9 +162,9 @@ const Reports = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<Card sx={{ minWidth: 200, height: 150, textAlign: "center" }}>
-							<CardContent sx={{ mt: "40px" }}>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+						<Card sx={{ minWidth: 200, height: 70, border: "2px solid black", textAlign: "center" }}>
+							<CardContent sx={{ mt: "2px" }}>
+								<Typography sx={{ fontSize: 14, background: "black", color: "white" }} gutterBottom>
 									Sell Rawa Cash
 								</Typography>
 

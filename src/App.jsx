@@ -49,7 +49,15 @@ const App = () => {
 					<Route path="/purchase" element={<PurchaseForm />} />
 					<Route path="/trade" element={<TradeForm />} />
 					<Route path="/view" element={<View />} />
-					<Route path="/report/:bool" element={<Calculations />} />
+					<Route
+						path="/report/:bool"
+						element={
+							<>
+								<Calculations />
+								<Reports />
+							</>
+						}
+					/>
 					<Route path="/Invoice" element={<Invoice />} />
 					<Route path="/admin" element={<FrontEndAdminAuth />}>
 						<Route path="unverifiedUserList" element={<UserList />} />
