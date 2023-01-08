@@ -42,8 +42,8 @@ const App = () => {
 
 				<Route path="/redirectPage" element={<RedirectPage />} />
 				<Route path="/forgotPassword/:id/:pageStatus" element={<ForgotPassword />} />
-				<Route path="/drawer" element={<DrawerM />} />
-				<Route path="/insta/" element={<Insta />} />
+				{/* <Route path="/drawer" element={<DrawerM />} />
+				<Route path="/insta/" element={<Insta />} /> */}
 
 				<Route element={<FrontEndUserAndAdminAuth />}>
 					<Route path="/purchase" element={<PurchaseForm />} />

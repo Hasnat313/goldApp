@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
-import { format, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
+import { format } from "date-fns";
 import { RotatingLines } from "react-loader-spinner";
 import { Print, Search, DateRange } from "@mui/icons-material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -61,7 +61,9 @@ const Reports = () => {
 			setLoading(false);
 
 			const { data, total } = resp.data;
-
+			const date = format(new Date(resp?.data.data[0]?.createdAt), "dd/MM/yyyy hh:mm:ss a");
+			console.log(date);
+			console.log(resp);
 			setFormDataArray([...data]);
 
 			setTotalPages(total);
@@ -251,7 +253,7 @@ const Reports = () => {
 												<td>{item.finalWeight}</td>
 												<td>{item.gramRate}</td>
 												<td>{item.pureWeight}</td>
-												<td>{string}</td>
+												<td>{format(new Date(item?.createdAt), "dd/MM/yy hh:mm a")}</td>
 												<td>{item.customer}</td>
 												<td>
 													<Button
@@ -280,8 +282,8 @@ const Reports = () => {
 												<td>{item.weight}</td>
 												<td>{item.rate}</td>
 												<td>{item.type}</td>
-												<td>{item.cash}</td>
-												<td>{string}</td>
+												<td>{Math.round(item.cash * 100) / 100}</td>
+												<td>{format(new Date(item?.createdAt), "dd/MM/yy hh:mm a")}</td>
 
 												<td>{"Hasnat"}</td>
 
